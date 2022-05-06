@@ -24,12 +24,17 @@ public class BookRepositoryStub implements StubBookRepository {
     }
 
     @Override
-    public Book findBokByBookId(String bookId) {
+    public Book findBookByBookId(String bookId) {
         return null;
     }
 
     @Override
     public void save(Book book) {
 
+    }
+
+    @Override
+    public List<Book> findAllBooks() {
+        return null;
     }
 }

@@ -49,8 +49,8 @@ public class MockitoStubBookTest {
 //        Mockito.when(bookRepository.findBokByBookId("1234")).thenReturn(book1);
 //        Mockito.when(bookRepository.findBokByBookId("1235")).thenReturn(book2);
 //
-     Mockito.doReturn(book1).when(bookRepository).findBokByBookId("1234");
-     Mockito.doReturn(book2).when(bookRepository).findBokByBookId("1235");
+     Mockito.doReturn(book1).when(bookRepository).findBookByBookId("1234");
+     Mockito.doReturn(book2).when(bookRepository).findBookByBookId("1235");
 
       int actualCost =  bookService.calculateTotalCost(bookIds);
 
@@ -64,4 +64,17 @@ public class MockitoStubBookTest {
         Mockito.doNothing().when(bookRepository).save(book1);
         bookService.addBook(book1);
     }
+
+
+    @Test
+    void testSaveBookWithBookRequest(){
+        BookRequest bookRequest = new BookRequest("Mockito in action",500,
+                LocalDate.now());
+        Book book= new Book(null,"Mockito in action",500,
+                LocalDate.now());
+        Mockito.doNothing().when(bookRepository).save(book);
+        bookService.addBook(bookRequest);
+    }
+
+
 }
